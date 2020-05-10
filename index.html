@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>River</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Jost&display=swap");
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      .texting-page {
+        position: absolute;
+        background: url("https://source.unsplash.com/900x2000/?aerial");
+        height: 100%;
+        width: 100%;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-size: cover;
+      }
+      .texting-page .header {
+        height: 4pc;
+        width: 100%;
+        margin: 0;
+        color: rgb(0, 0, 0);
+        background: rgba(255, 255, 255, 0.685);
+        backdrop-filter: blur(5px);
+      }
+      .header h3 {
+        position: absolute;
+        height: fit-content;
+        width: fit-content;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        font-size: 25px;
+        font-family: "Jost", sans-serif;
+      }
+      .backBtn {
+        position: absolute;
+        height: 50px;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 20px;
+      }
+      .messageBody {
+        height: auto;
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+      }
+      .texting-page .footer {
+        position: absolute;
+        margin: auto;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        height: 80px;
+        width: 100%;
+        background: linear-gradient(transparent, white);
+      }
+      .message-input {
+        height: 40px;
+        width: 80%;
+        padding: 20px;
+        background: transparent;
+        font-family: "Jost", sans-serif;
+        border: 0;
+        outline: none;
+        font-size: 25px;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+      .message-input::placeholder {
+        color: black;
+      }
+      .message-holder {
+        height: fit-content;
+        width: 100%;
+        display: inline-flex;
+        margin-bottom: 35px;
+      }
+      .my-image {
+        height: 50px;
+        position: absolute;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.678);
+        right: -25px;
+        top: -25px;
+      }
+      .their-image {
+        height: 50px;
+        position: absolute;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.678);
+        left: -25px;
+        top: -25px;
+      }
+      .my-text {
+        padding: 30px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.678);
+        backdrop-filter: blur(5px);
+        background: rgba(255, 255, 255, 0.623);
+        margin-left: auto;
+        right: 0;
+        max-width: 200px;
+        word-wrap: break-word;
+        word-break: break-word;
+        margin-right: 45px;
+        font-family: "Jost", sans-serif;
+      }
+      .their-text {
+        padding: 30px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.678);
+        backdrop-filter: blur(5px);
+        background: rgba(0, 0, 0, 0.623);
+        margin-right: auto;
+        left: 0;
+        color: white;
+        max-width: 200px;
+        word-wrap: break-word;
+        word-break: break-word;
+        margin-left: 45px;
+        font-family: "Jost", sans-serif;
+      }
+      .text {
+        font-size: 17px;
+      }
+      .home-page {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        transition: 0.5s;
+        background: url("https://source.unsplash.com/900x2000/?aerial");
+        background-size: cover;
+      }
+      .home-page .header {
+        height: 6pc;
+        width: 100%;
+        backdrop-filter: blur(5px);
+
+        background: rgba(255, 255, 255, 0.596);
+      }
+      .propic {
+        position: absolute;
+        height: 60px;
+        margin: auto;
+        top: 15px;
+        right: 20px;
+      }
+      .home-page .app-name {
+        position: absolute;
+        height: fit-content;
+        width: fit-content;
+        top: 25px;
+        left: 30px;
+        margin: auto;
+        font-family: "Jost", sans-serif;
+      }
+      .chats-container {
+        position: relative;
+        height: auto;
+        margin-top: 25px;
+        width: 100%;
+      }
+      .chat {
+        position: relative;
+        height: 70px;
+        width: 90%;
+        background: rgba(255, 255, 255, 0.596);
+        margin-top: 10px;
+        backdrop-filter: blur(5px);
+      }
+      .their-chat-pic {
+        position: absolute;
+        height: 50px;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 10px;
+      }
+      .chat h3 {
+        position: absolute;
+        height: fit-content;
+        width: fit-content;
+        margin: auto;
+        top: 0;
+        font-family: "Jost", sans-serif;
+        bottom: 0;
+        left: 70px;
+      }
+      .group-chat-pic {
+        position: absolute;
+        height: 4pc;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        right: 0;
+      }
+      .log-page {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        transition: 0.5s;
+        background: url("https://source.unsplash.com/900x2000/?aerial");
+        background-size: cover;
+      }
+      .log-container {
+        position: absolute;
+        font-family: "Jost", sans-serif;
+        height: 500px;
+        width: 350px;
+        background: rgba(255, 255, 255, 0.596);
+        backdrop-filter: blur(5px);
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      }
+      .log-page .app-name {
+        height: fit-content;
+        width: fit-content;
+        font-size: 40px;
+      }
+      .input-username {
+        width: 80%;
+        border: 0;
+        outline: none;
+        border-bottom: 2px solid white;
+        background: transparent;
+        padding: 15px;
+        margin: 5px;
+        font-size: 20px;
+      }
+      .input-password {
+        width: 80%;
+        border: 0;
+        outline: none;
+        border-bottom: 2px solid white;
+        background: transparent;
+        padding: 15px;
+        margin: 5px;
+        font-size: 20px;
+      }
+      .sign-up-btn {
+        margin: 5px;
+        height: fit-content;
+        width: fit-content;
+        padding: 10px;
+        font-size: 30px;
+      }
+      .sign-in-btn {
+        margin: 5px;
+        height: fit-content;
+        width: fit-content;
+        padding: 10px;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="texting-page">
+      <div class="header">
+        <img
+          src="https://cdn.iconscout.com/icon/free/png-512/left-384-475074.png"
+          class="backBtn"
+          onclick="openHomePage()"
+        />
+        <h3>SickLine Bro</h3>
+        <img
+          src="https://api.sololearn.com/Uploads/Avatars/5371585.jpg"
+          class="group-chat-pic"
+        />
+      </div>
+      <div class="messageBody">
+        <br />
+        <br />
+        <br />
+        <div class="message-holder">
+          <div class="my-text">
+            <div class="text">
+              Hi! How are you?
+            </div>
+            <img
+              src="https://api.sololearn.com/Uploads/Avatars/11500335.jpg"
+              class="my-image"
+            />
+          </div>
+        </div>
+        <div class="message-holder">
+          <div class="their-text">
+            <div class="text">
+              I am fine! What about you? Did you watch into the night?
+            </div>
+            <img
+              src="https://api.sololearn.com/Uploads/Avatars/5371585.jpg"
+              class="their-image"
+            />
+          </div>
+        </div>
+        <br />
+        <br />
+        <br />
+      </div>
+      <div class="footer">
+        <center>
+          <input
+            type="text"
+            placeholder="Type a message"
+            class="message-input"
+          />
+        </center>
+      </div>
+    </div>
+    <div class="home-page">
+      <div class="header">
+        <h1 class="app-name">River</h1>
+        <img
+          src="https://api.sololearn.com/Uploads/Avatars/11500335.jpg"
+          class="propic"
+        />
+      </div>
+      <center class="chats-container">
+        <div class="chat" onclick="openTextPage()">
+          <img
+            src="https://api.sololearn.com/Uploads/Avatars/5371585.jpg"
+            class="their-chat-pic"
+          />
+          <h3>SickLine Bro</h3>
+        </div>
+        <div class="chat" onclick="openTextPage()">
+          <img
+            src="https://api.sololearn.com/Uploads/Avatars/12846572.jpg"
+            class="their-chat-pic"
+          />
+          <h3>Mirielle</h3>
+        </div>
+        <!-- https://tayalestates.com/images/1027-103.png -->
+        <div class="chat" onclick="openTextPage()">
+          <img
+            src="https://tayalestates.com/images/1027-103.png"
+            class="their-chat-pic"
+          />
+          <h3>User</h3>
+        </div>
+      </center>
+    </div>
+    <div class="log-page">
+      <center class="log-container">
+        <br />
+        <h1 class="app-name">River</h1>
+        <br />
+        <input
+          type="text"
+          placeholder="Enter Username"
+          class="input-username"
+        />
+        <input
+          type="password"
+          placeholder="Enter Password"
+          class="input-password"
+        /><br /><br /><br />
+        <div class="sign-up-btn">Sign Up</div>
+        <div class="sign-in-btn">Sign In</div>
+      </center>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase.js"></script>
+    <script>
+      setInterval(() => {
+        document.querySelector(".messageBody").style.height =
+          window.innerHeight - 70 + "px";
+        document.querySelector(".chats-container").style.height =
+          window.innerHeight - 132 + "px";
+      }, 500);
+      function openTextPage() {
+        document.querySelector(".home-page").style.opacity = "0";
+        setTimeout(() => {
+          document.querySelector(".home-page").style.zIndex = "-10";
+        }, 500);
+      }
+      function openHomePage() {
+        document.querySelector(".home-page").style.zIndex = "+10";
+        document.querySelector(".home-page").style.opacity = "1";
+      }
+      document
+        .querySelector(".sign-up-btn")
+        .addEventListener("click", function () {
+          var ref = firebase.database();
+          if (
+            document.querySelector(".input-username").value.trim() != "" &&
+            document.querySelector(".input-password").value.trim() != ""
+          )
+            ref
+              .ref("River/Users")
+              .once("value")
+              .then(function (snapshot) {
+                if (
+                  snapshot
+                    .child(
+                      document.querySelector(".input-username").value.trim()
+                    )
+                    .exists()
+                ) {
+                  alert("User Already Exists");
+                } else {
+                  ref
+                    .ref("River/Users")
+                    .child(
+                      document.querySelector(".input-username").value.trim()
+                    )
+                    .set(
+                      document.querySelector(".input-password").value.trim()
+                    );
+
+                  document.querySelector(".log-page").style.opacity = "0";
+                  setTimeout(() => {
+                    document.querySelector(".log-page").style.zIndex = "-10";
+                  }, 500);
+                }
+              });
+        });
+      var myID = "";
+      document
+        .querySelector(".sign-in-btn")
+        .addEventListener("click", function () {
+          var ref = firebase.database();
+          if (
+            document.querySelector(".input-username").value.trim() != "" &&
+            document.querySelector(".input-password").value.trim() != ""
+          )
+            ref
+              .ref("River/Users")
+              .once("value")
+              .then(function (snapshot) {
+                if (
+                  snapshot
+                    .child(
+                      document.querySelector(".input-username").value.trim()
+                    )
+                    .exists()
+                ) {
+                  $.getJSON(
+                    "https://converse-dd75d.firebaseio.com/River/Users/" +
+                      document.querySelector(".input-username").value.trim() +
+                      ".json",
+                    callback
+                  );
+                  function callback(data) {
+                    if (
+                      data ===
+                      document.querySelector(".input-password").value.trim()
+                    ) {
+                      myID = document
+                        .querySelector(".input-username")
+                        .value.trim();
+                      console.log(myID);
+                      document.querySelector(".log-page").style.opacity = "0";
+                      setTimeout(() => {
+                        document.querySelector(".log-page").style.zIndex =
+                          "-10";
+                      }, 500);
+                    } else alert("Wrong Password!!!");
+                  }
+                } else alert("No user found!!!");
+              });
+        });
+      var firebaseConfig = {
+        apiKey: "AIzaSyBSO1l02gRubi7mZnIWhkxMcuXE-oMu33g",
+        authDomain: "converse-dd75d.firebaseapp.com",
+        databaseURL: "https://converse-dd75d.firebaseio.com",
+        projectId: "converse-dd75d",
+        storageBucket: "converse-dd75d.appspot.com",
+        messagingSenderId: "984079997699",
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+  </body>
+</html>
