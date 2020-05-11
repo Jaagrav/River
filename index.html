@@ -23,40 +23,57 @@
         bottom: 0;
         background-size: cover;
       }
+      .headerShade {
+        position: absolute;
+        height: 6pc;
+        width: 100%;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(black, rgba(0, 0, 0, 0.76), transparent);
+      }
       .texting-page .header {
-position:relative;
+        position: relative;
         height: 4pc;
         width: 100%;
         margin: 0;
         color: white;
+      }
+
+      .group-chat-pic {
+        position: absolute;
+        height: 3pc;
+        margin: auto;
+        top: 15px;
+        right: 20px;
       }
       .header h3 {
         position: absolute;
         height: fit-content;
         width: fit-content;
         margin: auto;
-        top: 0;
-        bottom: 0;
+        top: 20px;
         right: 0;
         left: 0;
         font-size: 25px;
         font-family: "Jost", sans-serif;
-color:white;
+        color: white;
       }
       .backBtn {
         position: absolute;
         height: 50px;
         margin: auto;
-        top: 0;
-        bottom: 0;
+        top: 12px;
         left: 20px;
-filter:invert(1);
+        filter: invert(1);
       }
       .messageBody {
         height: auto;
         width: 100%;
         overflow-x: hidden;
         overflow-y: scroll;
+        scroll-behavior: smooth;
       }
       .texting-page .footer {
         position: absolute;
@@ -66,7 +83,7 @@ filter:invert(1);
         bottom: 0;
         height: 80px;
         width: 100%;
-color:white;
+        color: white;
         background: linear-gradient(transparent, black);
       }
       .message-input {
@@ -83,9 +100,19 @@ color:white;
         bottom: 0;
         left: 0;
         right: 0;
+        color: white;
       }
       .message-input::placeholder {
         color: white;
+      }
+      .sendBtn {
+        transform: rotate(180deg);
+        filter: invert(1);
+        position: absolute;
+        height: 50px;
+        bottom: 12px;
+        right: 5px;
+        transition: 0.5s;
       }
       .message-holder {
         height: fit-content;
@@ -96,22 +123,19 @@ color:white;
       .my-image {
         height: 50px;
         position: absolute;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.678);
         right: -25px;
         top: -25px;
       }
       .their-image {
         height: 50px;
         position: absolute;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.678);
         left: -25px;
         top: -25px;
       }
       .my-text {
         padding: 30px;
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.678);
+        background: rgba(255, 255, 255, 0.596);
         backdrop-filter: blur(5px);
-        background: rgba(255, 255, 255, 0.623);
         margin-left: auto;
         right: 0;
         max-width: 200px;
@@ -122,7 +146,6 @@ color:white;
       }
       .their-text {
         padding: 30px;
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.678);
         backdrop-filter: blur(5px);
         background: rgba(0, 0, 0, 0.623);
         margin-right: auto;
@@ -145,6 +168,7 @@ color:white;
         top: 0;
         right: 0;
         left: 0;
+        color: white;
         bottom: 0;
         transition: 0.5s;
         background: url("https://source.unsplash.com/900x2000/?aerial");
@@ -153,9 +177,8 @@ color:white;
       .home-page .header {
         height: 6pc;
         width: 100%;
+        background: rgba(0, 0, 0, 0.596);
         backdrop-filter: blur(5px);
-
-        background: rgba(255, 255, 255, 0.596);
       }
       .propic {
         position: absolute;
@@ -183,7 +206,7 @@ color:white;
         position: relative;
         height: 70px;
         width: 90%;
-        background: rgba(255, 255, 255, 0.596);
+        background: rgba(0, 0, 0, 0.596);
         margin-top: 10px;
         backdrop-filter: blur(5px);
       }
@@ -205,14 +228,6 @@ color:white;
         bottom: 0;
         left: 70px;
       }
-      .group-chat-pic {
-        position: absolute;
-        height: 3pc;
-        margin: auto;
-        top: 0;
-        bottom: 0;
-        right: 15px;
-      }
       .log-page {
         position: absolute;
         height: 100%;
@@ -221,6 +236,7 @@ color:white;
         top: 0;
         right: 0;
         left: 0;
+        color: white;
         bottom: 0;
         transition: 0.5s;
         background: url("https://source.unsplash.com/900x2000/?aerial");
@@ -229,9 +245,11 @@ color:white;
       .log-container {
         position: absolute;
         font-family: "Jost", sans-serif;
-        height: 500px;
-        width: 350px;
-        background: rgba(255, 255, 255, 0.596);
+        height: 100%;
+        width: 100%;
+        /* height: 500px;
+        width: 350px; */
+        background: rgba(0, 0, 0, 0.596);
         backdrop-filter: blur(5px);
         margin: auto;
         top: 0;
@@ -242,7 +260,7 @@ color:white;
       .log-page .app-name {
         height: fit-content;
         width: fit-content;
-        font-size: 40px;
+        font-size: 60px;
       }
       .input-username {
         width: 80%;
@@ -252,6 +270,7 @@ color:white;
         background: transparent;
         padding: 15px;
         margin: 5px;
+        color: white;
         font-size: 20px;
       }
       .input-password {
@@ -261,6 +280,7 @@ color:white;
         border-bottom: 2px solid white;
         background: transparent;
         padding: 15px;
+        color: white;
         margin: 5px;
         font-size: 20px;
       }
@@ -278,20 +298,131 @@ color:white;
         padding: 10px;
         font-size: 20px;
       }
+      .settings-page {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: url("https://source.unsplash.com/900x2000/?aerial");
+        background-size: cover;
+        transition: 0.5s;
+        z-index: -10;
+        opacity: 0;
+      }
+      .settings-container {
+        position: absolute;
+        height: 420px;
+        width: 290px;
+        margin: auto;
+        padding: 30px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.596);
+        backdrop-filter: blur(5px);
+      }
+      .settings-image {
+        height: 110px;
+      }
+      .upload-image {
+        color: transparent;
+      }
+      .upload-image::-webkit-file-upload-button {
+        visibility: hidden;
+      }
+      .upload-image::before {
+        position: absolute;
+        content: "";
+        color: black;
+        width: 110px;
+        height: 110px;
+        display: inline-block;
+        background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+        border: 1px solid #999;
+        border-radius: 3px;
+        outline: none;
+        white-space: nowrap;
+        -webkit-user-select: none;
+        cursor: pointer;
+        text-shadow: 1px 1px #fff;
+        font-weight: 700;
+        font-size: 10pt;
+        margin: auto;
+        top: 30px;
+        opacity: 0;
+        right: 0;
+        left: 0;
+        outline: none;
+        border: none;
+      }
+      .reset-ID,
+      .confirm-password,
+      .reset-password,
+      .updatePasswordBtn {
+        width: 80%;
+        padding: 20px;
+        background: transparent;
+        outline: none;
+        border: 0;
+        font-size: 20px;
+        color: white;
+        border-bottom: 2px solid white;
+        font-family: "Jost", sans-serif;
+      }
+      .reset-ID {
+        text-align: center;
+      }
+      .updatePasswordBtn {
+        border: 0;
+      }
+      .loader {
+        position: absolute;
+        height: 70px;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+      }
+      .flash-page {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: #000;
+        z-index: +11;
+      }
     </style>
   </head>
   <body>
+    <div class="flash-page">
+      <img
+        src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/35771931234507.564a1d2403b3a.gif"
+        class="loader"
+      />
+    </div>
     <div class="texting-page">
+      <div class="headerShade"></div>
       <div class="header">
         <img
           src="https://cdn.iconscout.com/icon/free/png-512/left-384-475074.png"
           class="backBtn"
           onclick="openHomePage()"
         />
-        <h3>SickLine Bro</h3>
+        <h3 class="name">SickLine Bro</h3>
         <img
           src="https://api.sololearn.com/Uploads/Avatars/5371585.jpg"
           class="group-chat-pic"
+          onerror="this.src='https://tayalestates.com/images/1027-103.png'"
         />
       </div>
       <div class="messageBody">
@@ -325,13 +456,11 @@ color:white;
         <br />
       </div>
       <div class="footer">
-        <center>
-          <input
-            type="text"
-            placeholder="Type a message"
-            class="message-input"
-          />
-        </center>
+        <input type="text" placeholder="Type a message" class="message-input" />
+        <img
+          src="https://cdn.iconscout.com/icon/free/png-512/left-384-475074.png"
+          class="sendBtn"
+        />
       </div>
     </div>
     <div class="home-page">
@@ -340,36 +469,20 @@ color:white;
         <img
           src="https://api.sololearn.com/Uploads/Avatars/11500335.jpg"
           class="propic"
+          onerror="this.src='https://tayalestates.com/images/1027-103.png'"
+          onclick="openSettings()"
         />
       </div>
       <center class="chats-container">
-        <div class="chat" onclick="openTextPage()">
-          <img
-            src="https://api.sololearn.com/Uploads/Avatars/5371585.jpg"
-            class="their-chat-pic"
-          />
-          <h3>SickLine Bro</h3>
-        </div>
-        <div class="chat" onclick="openTextPage()">
-          <img
-            src="https://api.sololearn.com/Uploads/Avatars/12846572.jpg"
-            class="their-chat-pic"
-          />
-          <h3>Mirielle</h3>
-        </div>
-        <!-- https://tayalestates.com/images/1027-103.png -->
-        <div class="chat" onclick="openTextPage()">
-          <img
-            src="https://tayalestates.com/images/1027-103.png"
-            class="their-chat-pic"
-          />
-          <h3>User</h3>
-        </div>
+        <img
+          src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/35771931234507.564a1d2403b3a.gif"
+          class="loader"
+        />
       </center>
     </div>
     <div class="log-page">
       <center class="log-container">
-        <br />
+        <br /><br /><br /><br />
         <h1 class="app-name">River</h1>
         <br />
         <input
@@ -386,23 +499,78 @@ color:white;
         <div class="sign-in-btn">Sign In</div>
       </center>
     </div>
+    <div class="settings-page">
+      <div class="settings-container">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/7/75/Wrong.png"
+          style="height: 30px; top: 30px; left: 30px;"
+          class="backBtn"
+          onclick="closeSettings()"
+        />
+        <center>
+          <img
+            src="https://www.sololearn.com/avatars/302405be-2450-4981-a5ea-44e2bd57ea2c.jpg"
+            class="settings-image"
+            onerror="this.src='https://tayalestates.com/images/1027-103.png'"
+          />
+          <input type="file" class="upload-image" />
+          <input
+            type="text"
+            class="reset-ID"
+            placeholder="Enter a username"
+            readonly
+          />
+          <input
+            type="password"
+            class="confirm-password"
+            placeholder="Enter your old password"
+          />
+          <input
+            type="password"
+            class="reset-password"
+            placeholder="Enter your new password"
+          />
+          <div class="updatePasswordBtn">Update</div>
+        </center>
+      </div>
+    </div>
     <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase.js"></script>
     <script>
+      window.onload = function () {
+        document.querySelector(".flash-page").style.zIndex = "-15";
+      };
+      var myID = "",
+        IDs = "",
+        chatUpdater;
+      var firebaseConfig = {
+        apiKey: "AIzaSyBSO1l02gRubi7mZnIWhkxMcuXE-oMu33g",
+        authDomain: "converse-dd75d.firebaseapp.com",
+        databaseURL: "https://converse-dd75d.firebaseio.com",
+        projectId: "converse-dd75d",
+        storageBucket: "converse-dd75d.appspot.com",
+        messagingSenderId: "984079997699",
+      };
+      firebase.initializeApp(firebaseConfig);
+      var myImgUrl = "";
       setInterval(() => {
+        if (myID != "") {
+          myImgUrl =
+            "https://firebasestorage.googleapis.com/v0/b/converse-dd75d.appspot.com/o/River%2FUsers%2FProfilePix%2F" +
+            myID +
+            "?alt=media&token=ff464470-a8d3-4e9f-847f-f1afa772cc81";
+        }
         document.querySelector(".messageBody").style.height =
           window.innerHeight - 70 + "px";
         document.querySelector(".chats-container").style.height =
           window.innerHeight - 132 + "px";
+        if (document.querySelector(".message-input").value.trim() != "")
+          document.querySelector(".sendBtn").style.opacity = "1";
+        else document.querySelector(".sendBtn").style.opacity = "0";
       }, 500);
-      function openTextPage() {
-        document.querySelector(".home-page").style.opacity = "0";
-        setTimeout(() => {
-          document.querySelector(".home-page").style.zIndex = "-10";
-        }, 500);
-      }
       function openHomePage() {
-        document.querySelector(".home-page").style.zIndex = "+10";
-        document.querySelector(".home-page").style.opacity = "1";
+        clearInterval(textUpdateInterval);
+        document.querySelector(".home-page").style.transform = "translateY(0)";
+        document.querySelector(".home-page").style.filter = "opacity(1)";
       }
       document
         .querySelector(".sign-up-btn")
@@ -425,6 +593,9 @@ color:white;
                 ) {
                   alert("User Already Exists");
                 } else {
+                  myID = document.querySelector(".input-username").value.trim();
+                  console.log(myID);
+                  document.querySelector(".reset-ID").value = myID;
                   ref
                     .ref("River/Users")
                     .child(
@@ -438,10 +609,42 @@ color:white;
                   setTimeout(() => {
                     document.querySelector(".log-page").style.zIndex = "-10";
                   }, 500);
+                  chatUpdater = setInterval(function () {
+                    $.getJSON(
+                      "https://converse-dd75d.firebaseio.com/River/Users.json",
+                      updateChats
+                    );
+                  }, 1000);
                 }
               });
         });
-      var myID = "";
+
+      document
+        .querySelector(".updatePasswordBtn")
+        .addEventListener("click", function () {
+          $.getJSON(
+            "https://converse-dd75d.firebaseio.com/River/Users/" +
+              myID +
+              ".json",
+            function (data) {
+              if (document.querySelector(".confirm-password").value === data) {
+                if (
+                  document.querySelector(".reset-password").value != data &&
+                  document.querySelector(".reset-password").value.trim() != ""
+                )
+                  firebase
+                    .database()
+                    .ref("River/Users/" + myID)
+                    .set(
+                      document.querySelector(".reset-password").value.trim()
+                    );
+                else alert("Can't set same password!!!");
+              } else {
+                alert("Put proper old password!!!");
+              }
+            }
+          );
+        });
       document
         .querySelector(".sign-in-btn")
         .addEventListener("click", function () {
@@ -476,25 +679,172 @@ color:white;
                         .querySelector(".input-username")
                         .value.trim();
                       console.log(myID);
+                      document.querySelector(".reset-ID").value = myID;
                       document.querySelector(".log-page").style.opacity = "0";
                       setTimeout(() => {
                         document.querySelector(".log-page").style.zIndex =
                           "-10";
                       }, 500);
+                      chatUpdater = setInterval(function () {
+                        $.getJSON(
+                          "https://converse-dd75d.firebaseio.com/River/Users.json",
+                          updateChats
+                        );
+                      }, 1000);
                     } else alert("Wrong Password!!!");
                   }
                 } else alert("No user found!!!");
               });
         });
-      var firebaseConfig = {
-        apiKey: "AIzaSyBSO1l02gRubi7mZnIWhkxMcuXE-oMu33g",
-        authDomain: "converse-dd75d.firebaseapp.com",
-        databaseURL: "https://converse-dd75d.firebaseio.com",
-        projectId: "converse-dd75d",
-        storageBucket: "converse-dd75d.appspot.com",
-        messagingSenderId: "984079997699",
-      };
-      firebase.initializeApp(firebaseConfig);
+      function openSettings() {
+        document.querySelector(".settings-page").style.zIndex = "+10";
+        document.querySelector(".settings-page").style.opacity = "1";
+      }
+      function closeSettings() {
+        document.querySelector(".settings-page").style.opacity = "0";
+        setTimeout(() => {
+          document.querySelector(".settings-page").style.zIndex = "-10";
+        }, 500);
+      }
+      function updateChats(data) {
+        document.querySelector(".settings-image").src = myImgUrl;
+        document.querySelector(".propic").src = myImgUrl;
+        document.querySelector(".chats-container").innerHTML = "";
+        for (var i in data) {
+          if (i != myID) {
+            document.querySelector(".chats-container").innerHTML +=
+              '<div class="chat" onclick=openChatWindow("' +
+              i +
+              '")><img src="https://firebasestorage.googleapis.com/v0/b/converse-dd75d.appspot.com/o/River%2FUsers%2FProfilePix%2F' +
+              i +
+              '?alt=media&token=ff464470-a8d3-4e9f-847f-f1afa772cc81" onerror="this.src=\'https://tayalestates.com/images/1027-103.png\'" class="their-chat-pic"/><h3>' +
+              i +
+              "</h3></div>";
+          }
+        }
+      }
+      function openChatWindow(theirID) {
+        pastLength = 0;
+        document.querySelector(".messageBody").innerHTML =
+          '<img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/35771931234507.564a1d2403b3a.gif" class="loader"/>';
+        clearInterval(chatUpdater);
+        document.querySelector(".name").innerHTML = theirID;
+        document.querySelector(".group-chat-pic").src =
+          "https://firebasestorage.googleapis.com/v0/b/converse-dd75d.appspot.com/o/River%2FUsers%2FProfilePix%2F" +
+          theirID +
+          "?alt=media&token=ff464470-a8d3-4e9f-847f-f1afa772cc81";
+        document.querySelector(".home-page").style.transform =
+          "translateY(-100%)";
+        document.querySelector(".home-page").style.filter = "opacity(0)";
+        IDs = myID.localeCompare(theirID) < 0 ? myID + theirID : theirID + myID;
+        console.log(IDs);
+        textUpdateInterval = setInterval(function () {
+          $.getJSON(
+            "https://converse-dd75d.firebaseio.com/River/Chats/" +
+              IDs +
+              ".json",
+            callback
+          );
+        }, 500);
+      }
+
+      document
+        .querySelector(".message-input")
+        .addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            if (document.querySelector(".message-input").value.trim() != "") {
+              var firebaseref = firebase.database().ref();
+              firebaseref
+                .child("River/Chats")
+                .child(IDs)
+                .push({
+                  id: myID,
+                  text: document.querySelector(".message-input").value.trim(),
+                  timeStamp:
+                    new Date().getHours() + ":" + new Date().getMinutes(),
+                });
+              document.querySelector(".message-input").value = "";
+            }
+          }
+        });
+
+      document
+        .querySelector(".sendBtn")
+        .addEventListener("click", function (e) {
+          if (document.querySelector(".message-input").value.trim() != "") {
+            var firebaseref = firebase.database().ref();
+            firebaseref
+              .child("River/Chats")
+              .child(IDs)
+              .push({
+                id: myID,
+                text: document.querySelector(".message-input").value.trim(),
+                timeStamp:
+                  new Date().getHours() + ":" + new Date().getMinutes(),
+              });
+            document.querySelector(".message-input").value = "";
+          }
+        });
+
+      var pastLength = 0;
+      function callback(response) {
+        var presentLength = 0;
+        console.log(response);
+        document.querySelector(".messageBody").innerHTML = "<br><br><br>";
+        for (var i in response) {
+          if (response[i].id == myID)
+            document.querySelector(".messageBody").innerHTML +=
+              "<div class='message-holder' onclick=deleteMsg('" +
+              i +
+              "')><div class='my-text' ><img src='" +
+              myImgUrl +
+              "' onerror=\"this.src='https://tayalestates.com/images/1027-103.png'\" class='my-image'><div class='text'>" +
+              response[i].text.replace(/</g, "&lt;").replace(/>/g, "&gt;") +
+              "</div></div>";
+          else
+            document.querySelector(".messageBody").innerHTML +=
+              "<div class='message-holder'><div class='their-text'><div class='text'>" +
+              response[i].text.replace(/</g, "&lt;").replace(/>/g, "&gt;") +
+              "</div><img class='their-image' src='https://firebasestorage.googleapis.com/v0/b/converse-dd75d.appspot.com/o/River%2FUsers%2FProfilePix%2F" +
+              response[i].id +
+              "?alt=media&token=ff464470-a8d3-4e9f-847f-f1afa772cc81' onerror=\"this.src='https://tayalestates.com/images/1027-103.png'\"></div>";
+          document.querySelector(".messageBody").innerHTML += "<br><br><br>";
+          presentLength++;
+        }
+        if (presentLength != pastLength) {
+          pastLength = presentLength;
+          document
+            .querySelector(".messageBody")
+            .scrollTo(0, document.querySelector(".messageBody").scrollHeight);
+        }
+      }
+      document
+        .querySelector(".upload-image")
+        .addEventListener("change", function (e) {
+          console.log(e);
+          var pic = e.target.files[0];
+          var databaseRef = firebase.database().ref();
+          var storageRef = firebase
+            .storage()
+            .ref("River/Users/ProfilePix/" + myID);
+          var task = storageRef.put(pic);
+          task.on("state_changed", function progress(snapshot) {
+            if (snapshot.bytesTransferred == pic.size) {
+              closeSettings();
+              alert("Image Uploaded!");
+
+              myImgUrl = "";
+            }
+          });
+        });
+
+      function deleteMsg(index) {
+        var firebaseref = firebase
+          .database()
+          .ref("River/Chats/" + IDs + "/" + index);
+        if (confirm("Do you really want to unsend the message?"))
+          firebaseref.remove();
+      }
     </script>
   </body>
 </html>
