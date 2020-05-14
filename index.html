@@ -14,6 +14,7 @@
       .texting-page {
         position: absolute;
         background: url("https://source.unsplash.com/900x2000/?aerial");
+
         height: 100%;
         width: 100%;
         margin: auto;
@@ -25,7 +26,7 @@
       }
       .headerShade {
         position: absolute;
-        height: 6pc;
+        height: 7pc;
         width: 100%;
         margin: auto;
         top: 0;
@@ -34,19 +35,24 @@
         background: linear-gradient(black, rgba(0, 0, 0, 0.76), transparent);
       }
       .texting-page .header {
-        position: relative;
+        position: absolute;
         height: 4pc;
         width: 100%;
-        margin: 0;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
         color: white;
       }
 
       .group-chat-pic {
         position: absolute;
         height: 3pc;
+        width: 3pc;
         margin: auto;
         top: 15px;
         right: 20px;
+        border-radius: 40% 40% 40% 40%;
       }
       .header h3 {
         position: absolute;
@@ -69,11 +75,17 @@
         filter: invert(1);
       }
       .messageBody {
-        height: auto;
+        height: 100%;
         width: 100%;
         overflow-x: hidden;
         overflow-y: scroll;
         scroll-behavior: smooth;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
       }
       .texting-page .footer {
         position: absolute;
@@ -118,24 +130,35 @@
         height: fit-content;
         width: 100%;
         display: inline-flex;
-        margin-bottom: 35px;
+        margin-top: 50px;
+      }
+      .same-message-holder {
+        height: fit-content;
+        width: 100%;
+        display: inline-flex;
+        margin-top: 10px;
       }
       .my-image {
         height: 50px;
+        width: 50px;
         position: absolute;
         right: -25px;
         top: -25px;
+        border-radius: 40%;
       }
       .their-image {
         height: 50px;
+        width: 50px;
         position: absolute;
         left: -25px;
         top: -25px;
+        border-radius: 40%;
       }
       .my-text {
         padding: 30px;
         background: rgba(255, 255, 255, 0.596);
         backdrop-filter: blur(5px);
+        margin: 0;
         margin-left: auto;
         right: 0;
         max-width: 200px;
@@ -143,11 +166,13 @@
         word-break: break-word;
         margin-right: 45px;
         font-family: "Jost", sans-serif;
+        border-radius: 20px;
       }
       .their-text {
         padding: 30px;
         backdrop-filter: blur(5px);
         background: rgba(0, 0, 0, 0.623);
+        margin: 0;
         margin-right: auto;
         left: 0;
         color: white;
@@ -156,6 +181,7 @@
         word-break: break-word;
         margin-left: 45px;
         font-family: "Jost", sans-serif;
+        border-radius: 20px;
       }
       .text {
         font-size: 17px;
@@ -175,17 +201,24 @@
         background-size: cover;
       }
       .home-page .header {
-        height: 6pc;
-        width: 100%;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        height: 100%;
+        width: 6pc;
         background: rgba(0, 0, 0, 0.596);
         backdrop-filter: blur(5px);
       }
       .propic {
         position: absolute;
         height: 60px;
+        width: 60px;
         margin: auto;
         top: 15px;
         right: 20px;
+        border-radius: 40%;
       }
       .home-page .app-name {
         position: absolute;
@@ -197,26 +230,30 @@
         font-family: "Jost", sans-serif;
       }
       .chats-container {
-        position: relative;
-        height: auto;
-        margin-top: 25px;
-        width: 100%;
+        position: absolute;
+        height: 100%;
+        width: 70%;
+        margin: auto;
+        bottom: 0;
+        right: 0;
       }
       .chat {
         position: relative;
         height: 70px;
         width: 90%;
         background: rgba(0, 0, 0, 0.596);
-        margin-top: 10px;
         backdrop-filter: blur(5px);
+        margin-top: 10px;
       }
       .their-chat-pic {
         position: absolute;
         height: 50px;
+        width: 50px;
         margin: auto;
         top: 0;
         bottom: 0;
         left: 10px;
+        border-radius: 40%;
       }
       .chat h3 {
         position: absolute;
@@ -240,6 +277,7 @@
         bottom: 0;
         transition: 0.5s;
         background: url("https://source.unsplash.com/900x2000/?aerial");
+
         background-size: cover;
       }
       .log-container {
@@ -328,6 +366,8 @@
       }
       .settings-image {
         height: 110px;
+        width: 110px;
+        border-radius: 40%;
       }
       .upload-image {
         color: transparent;
@@ -401,34 +441,34 @@
         background: #000;
         z-index: +11;
       }
+      .search-mine {
+        position: absolute;
+        height: 50px;
+        width: 100px;
+        margin: auto;
+        top: 23px;
+        right: 20px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        padding: 20px;
+        font-size: 20px;
+        font-family: "Jost", sans-serif;
+      }
     </style>
   </head>
   <body>
     <div class="flash-page">
       <img
-        src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/35771931234507.564a1d2403b3a.gif"
+        src="https://www.theaccessibilityresourcecenter.org/assets/images/loading.gif"
         class="loader"
       />
     </div>
     <div class="texting-page">
-      <div class="headerShade"></div>
-      <div class="header">
-        <img
-          src="https://cdn.iconscout.com/icon/free/png-512/left-384-475074.png"
-          class="backBtn"
-          onclick="openHomePage()"
-        />
-        <h3 class="name">SickLine Bro</h3>
-        <img
-          src="https://api.sololearn.com/Uploads/Avatars/5371585.jpg"
-          class="group-chat-pic"
-          onerror="this.src='https://tayalestates.com/images/1027-103.png'"
-        />
-      </div>
       <div class="messageBody">
         <br />
         <br />
-        <br />
+        <br /><br /><br /><br />
         <div class="message-holder">
           <div class="my-text">
             <div class="text">
@@ -455,6 +495,20 @@
         <br />
         <br />
       </div>
+      <div class="headerShade"></div>
+      <div class="header">
+        <img
+          src="https://cdn.iconscout.com/icon/free/png-512/left-384-475074.png"
+          class="backBtn"
+          onclick="openHomePage()"
+        />
+        <h3 class="name">SickLine Bro</h3>
+        <img
+          src="https://api.sololearn.com/Uploads/Avatars/5371585.jpg"
+          class="group-chat-pic"
+          onerror="this.src='https://tayalestates.com/images/1027-103.png'"
+        />
+      </div>
       <div class="footer">
         <input type="text" placeholder="Type a message" class="message-input" />
         <img
@@ -465,7 +519,6 @@
     </div>
     <div class="home-page">
       <div class="header">
-        <h1 class="app-name">River</h1>
         <img
           src="https://api.sololearn.com/Uploads/Avatars/11500335.jpg"
           class="propic"
@@ -473,9 +526,10 @@
           onclick="openSettings()"
         />
       </div>
+      <input type="search" class="search-mine" placeholder="Search" />
       <center class="chats-container">
         <img
-          src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/35771931234507.564a1d2403b3a.gif"
+          src="https://www.theaccessibilityresourcecenter.org/assets/images/loading.gif"
           class="loader"
         />
       </center>
@@ -553,22 +607,24 @@
       firebase.initializeApp(firebaseConfig);
       var myImgUrl = "";
       setInterval(() => {
-        if (myID != "") {
-          myImgUrl =
-            "https://firebasestorage.googleapis.com/v0/b/converse-dd75d.appspot.com/o/River%2FUsers%2FProfilePix%2F" +
-            myID +
-            "?alt=media&token=ff464470-a8d3-4e9f-847f-f1afa772cc81";
-        }
-        document.querySelector(".messageBody").style.height =
-          window.innerHeight - 70 + "px";
+        document.querySelector(".chats-container").style.width =
+          window.innerWidth - 97 + "px";
+        document.querySelector(".search-mine").style.width =
+          window.innerWidth - 140 + "px";
         document.querySelector(".chats-container").style.height =
-          window.innerHeight - 132 + "px";
+          window.innerHeight - 100 + "px";
         if (document.querySelector(".message-input").value.trim() != "")
           document.querySelector(".sendBtn").style.opacity = "1";
         else document.querySelector(".sendBtn").style.opacity = "0";
       }, 500);
       function openHomePage() {
         clearInterval(textUpdateInterval);
+        chatUpdater = setInterval(function () {
+          $.getJSON(
+            "https://converse-dd75d.firebaseio.com/River/Users.json",
+            updateChats
+          );
+        }, 1000);
         document.querySelector(".home-page").style.transform = "translateY(0)";
         document.querySelector(".home-page").style.filter = "opacity(1)";
       }
@@ -601,10 +657,13 @@
                     .child(
                       document.querySelector(".input-username").value.trim()
                     )
-                    .set(
-                      document.querySelector(".input-password").value.trim()
-                    );
-
+                    .set({
+                      key: document
+                        .querySelector(".input-password")
+                        .value.trim(),
+                      propic: "none",
+                    });
+                  myImgUrl = "https://tayalestates.com/images/1027-103.png";
                   document.querySelector(".log-page").style.opacity = "0";
                   setTimeout(() => {
                     document.querySelector(".log-page").style.zIndex = "-10";
@@ -625,20 +684,21 @@
           $.getJSON(
             "https://converse-dd75d.firebaseio.com/River/Users/" +
               myID +
-              ".json",
+              "/key.json",
             function (data) {
               if (document.querySelector(".confirm-password").value === data) {
                 if (
                   document.querySelector(".reset-password").value != data &&
                   document.querySelector(".reset-password").value.trim() != ""
-                )
+                ) {
                   firebase
                     .database()
-                    .ref("River/Users/" + myID)
+                    .ref("River/Users/" + myID + "/key")
                     .set(
                       document.querySelector(".reset-password").value.trim()
                     );
-                else alert("Can't set same password!!!");
+                  closeSettings();
+                } else alert("Can't set same password!!!");
               } else {
                 alert("Put proper old password!!!");
               }
@@ -672,7 +732,7 @@
                   );
                   function callback(data) {
                     if (
-                      data ===
+                      data.key ===
                       document.querySelector(".input-password").value.trim()
                     ) {
                       myID = document
@@ -691,6 +751,12 @@
                           updateChats
                         );
                       }, 1000);
+                      if (data.propic == "none") {
+                        myImgUrl =
+                          "https://tayalestates.com/images/1027-103.png";
+                      } else {
+                        myImgUrl = data.propic;
+                      }
                     } else alert("Wrong Password!!!");
                   }
                 } else alert("No user found!!!");
@@ -707,37 +773,42 @@
         }, 500);
       }
       function updateChats(data) {
+        console.log(myImgUrl);
         document.querySelector(".settings-image").src = myImgUrl;
         document.querySelector(".propic").src = myImgUrl;
         document.querySelector(".chats-container").innerHTML = "";
         for (var i in data) {
           if (i != myID) {
+            var pic = "";
+            if (data[i].propic != "none") pic = data[i].propic;
+            else pic = "https://tayalestates.com/images/1027-103.png";
             document.querySelector(".chats-container").innerHTML +=
               '<div class="chat" onclick=openChatWindow("' +
               i +
-              '")><img src="https://firebasestorage.googleapis.com/v0/b/converse-dd75d.appspot.com/o/River%2FUsers%2FProfilePix%2F' +
-              i +
-              '?alt=media&token=ff464470-a8d3-4e9f-847f-f1afa772cc81" onerror="this.src=\'https://tayalestates.com/images/1027-103.png\'" class="their-chat-pic"/><h3>' +
+              '","' +
+              pic +
+              '")><img src="' +
+              pic +
+              '" onerror="this.src=\'https://tayalestates.com/images/1027-103.png\'" class="their-chat-pic"/><h3>' +
               i +
               "</h3></div>";
           }
         }
       }
-      function openChatWindow(theirID) {
+      var theirpic = "";
+      function openChatWindow(theirID, pic) {
         pastLength = 0;
         document.querySelector(".messageBody").innerHTML =
-          '<img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/35771931234507.564a1d2403b3a.gif" class="loader"/>';
+          '<img src="https://www.theaccessibilityresourcecenter.org/assets/images/loading.gif" class="loader"/>';
         clearInterval(chatUpdater);
         document.querySelector(".name").innerHTML = theirID;
-        document.querySelector(".group-chat-pic").src =
-          "https://firebasestorage.googleapis.com/v0/b/converse-dd75d.appspot.com/o/River%2FUsers%2FProfilePix%2F" +
-          theirID +
-          "?alt=media&token=ff464470-a8d3-4e9f-847f-f1afa772cc81";
+        document.querySelector(".group-chat-pic").src = pic;
         document.querySelector(".home-page").style.transform =
           "translateY(-100%)";
         document.querySelector(".home-page").style.filter = "opacity(0)";
         IDs = myID.localeCompare(theirID) < 0 ? myID + theirID : theirID + myID;
         console.log(IDs);
+        theirpic = pic;
         textUpdateInterval = setInterval(function () {
           $.getJSON(
             "https://converse-dd75d.firebaseio.com/River/Chats/" +
@@ -786,31 +857,51 @@
           }
         });
 
-      var pastLength = 0;
+      var pastLength = 0,
+        id = "";
       function callback(response) {
         var presentLength = 0;
         console.log(response);
         document.querySelector(".messageBody").innerHTML = "<br><br><br>";
+        id = "";
         for (var i in response) {
-          if (response[i].id == myID)
-            document.querySelector(".messageBody").innerHTML +=
-              "<div class='message-holder' onclick=deleteMsg('" +
-              i +
-              "')><div class='my-text' ><img src='" +
-              myImgUrl +
-              "' onerror=\"this.src='https://tayalestates.com/images/1027-103.png'\" class='my-image'><div class='text'>" +
-              response[i].text.replace(/</g, "&lt;").replace(/>/g, "&gt;") +
-              "</div></div>";
-          else
-            document.querySelector(".messageBody").innerHTML +=
-              "<div class='message-holder'><div class='their-text'><div class='text'>" +
-              response[i].text.replace(/</g, "&lt;").replace(/>/g, "&gt;") +
-              "</div><img class='their-image' src='https://firebasestorage.googleapis.com/v0/b/converse-dd75d.appspot.com/o/River%2FUsers%2FProfilePix%2F" +
-              response[i].id +
-              "?alt=media&token=ff464470-a8d3-4e9f-847f-f1afa772cc81' onerror=\"this.src='https://tayalestates.com/images/1027-103.png'\"></div>";
-          document.querySelector(".messageBody").innerHTML += "<br><br><br>";
+          if (response[i].id == myID) {
+            if (id != myID)
+              document.querySelector(".messageBody").innerHTML +=
+                "<div class='message-holder' onclick=deleteMsg('" +
+                i +
+                "')><div class='my-text' ><img src='" +
+                myImgUrl +
+                "' onerror=\"this.src='https://tayalestates.com/images/1027-103.png'\" class='my-image'><div class='text'>" +
+                response[i].text.replace(/</g, "&lt;").replace(/>/g, "&gt;") +
+                "</div></div>";
+            else
+              document.querySelector(".messageBody").innerHTML +=
+                "<div class='same-message-holder' onclick=deleteMsg('" +
+                i +
+                "')><div class='my-text' ><div class='text'>" +
+                response[i].text.replace(/</g, "&lt;").replace(/>/g, "&gt;") +
+                "</div></div>";
+            id = response[i].id;
+          } else {
+            if (id != response[i].id)
+              document.querySelector(".messageBody").innerHTML +=
+                "<div class='message-holder'><div class='their-text'><div class='text'>" +
+                response[i].text.replace(/</g, "&lt;").replace(/>/g, "&gt;") +
+                "</div><img class='their-image' src='" +
+                theirpic +
+                "' onerror=\"this.src='https://tayalestates.com/images/1027-103.png'\"></div>";
+            else
+              document.querySelector(".messageBody").innerHTML +=
+                "<div class='same-message-holder'><div class='their-text' ><div class='text'>" +
+                response[i].text.replace(/</g, "&lt;").replace(/>/g, "&gt;") +
+                "</div></div>";
+            id = response[i].id;
+          }
           presentLength++;
         }
+        document.querySelector(".messageBody").innerHTML +=
+          "<br><br><br><br><br>";
         if (presentLength != pastLength) {
           pastLength = presentLength;
           document
@@ -832,8 +923,18 @@
             if (snapshot.bytesTransferred == pic.size) {
               closeSettings();
               alert("Image Uploaded!");
-
-              myImgUrl = "";
+              firebase
+                .database()
+                .ref("River/Users/" + myID + "/propic")
+                .set(
+                  "https://firebasestorage.googleapis.com/v0/b/converse-dd75d.appspot.com/o/River%2FUsers%2FProfilePix%2F" +
+                    myID +
+                    "?alt=media&token=ff464470-a8d3-4e9f-847f-f1afa772cc81"
+                );
+              myImgUrl =
+                "https://firebasestorage.googleapis.com/v0/b/converse-dd75d.appspot.com/o/River%2FUsers%2FProfilePix%2F" +
+                myID +
+                "?alt=media&token=ff464470-a8d3-4e9f-847f-f1afa772cc81";
             }
           });
         });
