@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta name="theme-color" content="#000000" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>River</title>
@@ -350,6 +351,8 @@
         margin: auto;
         bottom: 0;
         right: 0;
+        overflow-x: hidden;
+        overflow-y: scroll;
       }
       .chat {
         position: relative;
@@ -358,6 +361,7 @@
         background: rgba(0, 0, 0, 0.596);
         backdrop-filter: blur(5px);
         margin-top: 10px;
+        border-radius: 30px;
       }
       .their-chat-pic {
         position: absolute;
@@ -483,10 +487,6 @@
         height: 110px;
         width: 110px;
         border-radius: 40%;
-        position: absolute;
-        top: 30px;
-        left: 0;
-        right: 0;
       }
       .upload-image {
         color: transparent;
@@ -583,6 +583,17 @@
         right: 15px;
         bottom: 15px;
         font-family: "Jost", sans-serif;
+      }
+      .no-friends {
+        position: absolute;
+        height: fit-content;
+        width: fit-content;
+        margin: auto;
+        font-family: "Jost", sans-serif;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
       }
     </style>
   </head>
@@ -779,8 +790,18 @@
       }, 500);
       function openHomePage() {
         clearInterval(textUpdateInterval);
-        myChatUpdater = setInterval(updateMyChats, 1000);
-        document.querySelector(".home-page").style.transform = "translateY(0)";
+        clearInterval(chatUpdater);
+        clearInterval(myChatUpdater);
+
+        document.querySelector(".explore-chats").style.transform = "scale(0.8)";
+        document.querySelector(".my-chats").style.transform = "scale(1)";
+        myChatUpdater = $.getJSON(
+          "https://converse-dd75d.firebaseio.com/River/Users/" +
+            myID +
+            "/Contacts.json",
+          updateMyChats
+        );
+        document.querySelector(".home-page").style.zIndex = "+10";
         document.querySelector(".home-page").style.filter = "opacity(1)";
       }
       document
@@ -823,7 +844,12 @@
                   setTimeout(() => {
                     document.querySelector(".log-page").style.zIndex = "-10";
                   }, 500);
-                  myChatUpdater = setInterval(updateMyChats, 1000);
+                  myChatUpdater = $.getJSON(
+                    "https://converse-dd75d.firebaseio.com/River/Users/" +
+                      myID +
+                      "/Contacts.json",
+                    updateMyChats
+                  );
                 }
               });
         });
@@ -895,12 +921,12 @@
                         document.querySelector(".log-page").style.zIndex =
                           "-10";
                       }, 500);
-                      myChatUpdater = setInterval(function () {
-                        $.getJSON(
-                          "https://converse-dd75d.firebaseio.com/River/Users.json",
-                          updateMyChats
-                        );
-                      }, 1000);
+                      myChatUpdater = $.getJSON(
+                        "https://converse-dd75d.firebaseio.com/River/Users/" +
+                          myID +
+                          "/Contacts.json",
+                        updateMyChats
+                      );
                       if (data.propic == "none") {
                         myImgUrl =
                           "https://tayalestates.com/images/1027-103.png";
@@ -944,15 +970,60 @@
           document.querySelector(".explore-chats").style.transform =
             "scale(0.8)";
           document.querySelector(".my-chats").style.transform = "scale(1)";
-          myChatUpdater = setInterval(updateMyChats, 1000);
+          myChatUpdater = $.getJSON(
+            "https://converse-dd75d.firebaseio.com/River/Users/" +
+              myID +
+              "/Contacts.json",
+            updateMyChats
+          );
         });
-      function updateMyChats() {
-        $.getJSON(
-          "https://converse-dd75d.firebaseio.com/River/Users/" +
-            myID +
-            "/Contacts.json",
-          updateChats
-        );
+      function updateMyChats(data) {
+        var myChats = [],
+          c = 0;
+        document.querySelector(".chats-container").innerHTML = "";
+        for (var j in data) {
+          c++;
+          myChats.push(j);
+          $.getJSON(
+            "https://converse-dd75d.firebaseio.com/River/Users/" + j + ".json",
+            function (myChatIds) {
+              document.querySelector(".settings-image").src = myImgUrl;
+              document.querySelector(".propic").src = myImgUrl;
+              var pic = "";
+              if (myChatIds.propic != "none") pic = myChatIds.propic;
+              else pic = "https://tayalestates.com/images/1027-103.png";
+              document.querySelector(".chats-container").innerHTML +=
+                '<div class="chat" onclick=openChatWindow("' +
+                myChatIds.propic
+                  .replace(
+                    "https://firebasestorage.googleapis.com/v0/b/converse-dd75d.appspot.com/o/River%2FUsers%2FProfilePix%2F",
+                    ""
+                  )
+                  .replace(
+                    "?alt=media&token=ff464470-a8d3-4e9f-847f-f1afa772cc81",
+                    ""
+                  ) +
+                '","' +
+                pic +
+                '")><img src="' +
+                pic +
+                '" onerror="this.src=\'https://tayalestates.com/images/1027-103.png\'" class="their-chat-pic"/><h3>' +
+                myChatIds.propic
+                  .replace(
+                    "https://firebasestorage.googleapis.com/v0/b/converse-dd75d.appspot.com/o/River%2FUsers%2FProfilePix%2F",
+                    ""
+                  )
+                  .replace(
+                    "?alt=media&token=ff464470-a8d3-4e9f-847f-f1afa772cc81",
+                    ""
+                  ) +
+                "</h3></div>";
+            }
+          );
+        }
+        if (c == 0)
+          document.querySelector(".chats-container").innerHTML =
+            "<h3 class='no-friends'>Tap on the explore button to chat with new people.</h3>";
         console.log("updateMyChats");
         // console.log(myImgUrl);
         // document.querySelector(".settings-image").src = myImgUrl;
@@ -1015,9 +1086,15 @@
         clearInterval(myChatUpdater);
         document.querySelector(".name").innerHTML = theirID;
         document.querySelector(".group-chat-pic").src = pic;
-        document.querySelector(".home-page").style.transform =
-          "translateY(-100%)";
         document.querySelector(".home-page").style.filter = "opacity(0)";
+        setTimeout(() => {
+          document.querySelector(".home-page").style.zIndex = "-10";
+        }, 500);
+        setTimeout(() => {
+          document
+            .querySelector(".messageBody")
+            .scrollTo(0, document.querySelector(".messageBody").scrollHeight);
+        }, 2500);
         IDs = myID.localeCompare(theirID) < 0 ? myID + theirID : theirID + myID;
         console.log(IDs);
         theirpic = pic;
